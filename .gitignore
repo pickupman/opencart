@@ -9,6 +9,9 @@ Icon?
 ehthumbs.db
 Thumbs.db
 
-# Ignore system configuration value #
-upload/admin/config.php
-upload/config.php
+# Ignore system cache #
+upload/image/cache/*
+upload/system/cache/*
+
+# Ignore local .htaccess #
+upload/.htaccess
