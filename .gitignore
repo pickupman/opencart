@@ -1,0 +1,14 @@
+# OS generated files #
+######################
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+Icon?
+ehthumbs.db
+Thumbs.db
+
+# Ignore system configuration value #
+upload/admin/config.php
+upload/config.php
