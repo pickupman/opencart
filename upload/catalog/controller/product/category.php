@@ -275,8 +275,8 @@ class ControllerProductCategory extends Controller {
 			$this->data['limits'] = array();
 			
 			$this->data['limits'][] = array(
-				'text'  => $this->config->get('config_catalog_limit'),
-				'value' => $this->config->get('config_catalog_limit'),
+				'text'  => (int)$this->config->get('config_catalog_limit'),
+				'value' => (int)$this->config->get('config_catalog_limit'),
 				'href'  => $this->url->link('product/category', 'path=' . $this->request->get['path'] . $url . '&limit=' . $this->config->get('config_catalog_limit'))
 			);
 						
@@ -303,7 +303,20 @@ class ControllerProductCategory extends Controller {
 				'value' => 100,
 				'href'  => $this->url->link('product/category', 'path=' . $this->request->get['path'] . $url . '&limit=100')
 			);
-						
+
+			sort($this->data['limits']);
+
+			$duplicateLimit = false;
+			for ($i = 1; $i < count($this->data['limits']); $i++) {
+				if ($this->data['limits'][$i] == $this->data['limits'][$i-1]) {
+					$duplicateLimit = $i;
+				}
+			}
+
+			if ($duplicateLimit) {
+				unset($this->data['limits'][$duplicateLimit]);
+			}
+
 			$url = '';
 	
 			if (isset($this->request->get['sort'])) {
