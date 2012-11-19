@@ -13,5 +13,8 @@ Thumbs.db
 upload/image/cache/*
 upload/system/cache/*
 
+#Ignore error files #
+upload/system/logs/error.txt
+
 # Ignore local .htaccess #
 upload/.htaccess
