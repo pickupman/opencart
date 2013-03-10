@@ -1798,6 +1798,29 @@ INSERT INTO `oc_manufacturer_to_store` (`manufacturer_id`, `store_id`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `oc_modification`
+--
+
+DROP TABLE IF EXISTS `oc_modification`;
+CREATE TABLE `oc_modification` (
+  `modification_id` int(11) NOT NULL AUTO_INCREMENT,
+  `code` varchar(32) NOT NULL,
+  `name` varchar(64) NOT NULL,
+  `author` varchar(64) NOT NULL,
+  `version` varchar(32) NOT NULL,
+  `xml` text NOT NULL,
+  `date_added` datetime NOT NULL,
+  `date_modified` datetime NOT NULL,
+  PRIMARY KEY (`modification_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Dumping data for table `oc_modification`
+--
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `oc_option`
 --
 
@@ -3003,7 +3026,7 @@ INSERT INTO `oc_setting` (`setting_id`, `store_id`, `group`, `key`, `value`, `se
 (14, 0, 'shipping', 'shipping_status', '1', 0),
 (15, 0, 'shipping', 'shipping_estimator', '1', 0),
 (16, 0, 'config', 'config_google_analytics', '', 0),
-(17, 0, 'config', 'config_error_filename', 'error.txt', 0),
+(17, 0, 'config', 'config_error_filename', 'error.log', 0),
 (18, 0, 'config', 'config_error_log', '1', 0),
 (19, 0, 'config', 'config_error_display', '1', 0),
 (20, 0, 'config', 'config_compression', '0', 0),
@@ -5452,21 +5475,22 @@ INSERT INTO `oc_zone` (`zone_id`, `country_id`, `code`, `name`, `status`) VALUES
 (1968, 128, 'SLM', 'Salima', 1),
 (1969, 128, 'THY', 'Thyolo', 1),
 (1970, 128, 'ZBA', 'Zomba', 1),
-(1971, 129, 'JO', 'Johor', 1),
-(1972, 129, 'KE', 'Kedah', 1),
-(1973, 129, 'KL', 'Kelantan', 1),
-(1974, 129, 'LA', 'Labuan', 1),
-(1975, 129, 'ME', 'Melaka', 1),
-(1976, 129, 'NS', 'Negeri Sembilan', 1),
-(1977, 129, 'PA', 'Pahang', 1),
-(1978, 129, 'PE', 'Perak', 1),
-(1979, 129, 'PR', 'Perlis', 1),
-(1980, 129, 'PP', 'Pulau Pinang', 1),
-(1981, 129, 'SA', 'Sabah', 1),
-(1982, 129, 'SR', 'Sarawak', 1),
-(1983, 129, 'SE', 'Selangor', 1),
-(1984, 129, 'TE', 'Terengganu', 1),
-(1985, 129, 'WP', 'Wilayah Persekutuan', 1),
+(1971, 129, 'MY-01', 'Johor', 1),
+(1972, 129, 'MY-02', 'Kedah', 1),
+(1973, 129, 'MY-03', 'Kelantan', 1),
+(1974, 129, 'MY-15', 'Labuan', 1),
+(1975, 129, 'MY-04', 'Melaka', 1),
+(1976, 129, 'MY-05', 'Negeri Sembilan', 1),
+(1977, 129, 'MY-06', 'Pahang', 1),
+(1978, 129, 'MY-08', 'Perak', 1),
+(1979, 129, 'MY-09', 'Perlis', 1),
+(1980, 129, 'MY-07', 'Pulau Pinang', 1),
+(1981, 129, 'MY-12', 'Sabah', 1),
+(1982, 129, 'MY-13', 'Sarawak', 1),
+(1983, 129, 'MY-10', 'Selangor', 1),
+(1984, 129, 'MY-11', 'Terengganu', 1),
+(1985, 129, 'MY-14', 'Kuala Lumpur', 1),
+(4035, 129, 'MY-16', 'Putrajaya', 1),
 (1986, 130, 'THU', 'Thiladhunmathi Uthuru', 1),
 (1987, 130, 'THD', 'Thiladhunmathi Dhekunu', 1),
 (1988, 130, 'MLU', 'Miladhunmadulu Uthuru', 1),
