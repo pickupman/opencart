@@ -3,7 +3,7 @@ class ControllerUserUserPermission extends Controller {
 	private $error = array();
  
 	public function index() {
-		$this->load->language('user/user_group');
+		$this->language->load('user/user_group');
  
 		$this->document->setTitle($this->language->get('heading_title'));
  		
@@ -13,7 +13,7 @@ class ControllerUserUserPermission extends Controller {
 	}
 
 	public function insert() {
-		$this->load->language('user/user_group');
+		$this->language->load('user/user_group');
 
 		$this->document->setTitle($this->language->get('heading_title'));
 		
@@ -45,7 +45,7 @@ class ControllerUserUserPermission extends Controller {
 	}
 
 	public function update() {
-		$this->load->language('user/user_group');
+		$this->language->load('user/user_group');
 
 		$this->document->setTitle($this->language->get('heading_title'));
 		
@@ -77,7 +77,7 @@ class ControllerUserUserPermission extends Controller {
 	}
 
 	public function delete() { 
-		$this->load->language('user/user_group');
+		$this->language->load('user/user_group');
 
 		$this->document->setTitle($this->language->get('heading_title'));
 		
@@ -154,7 +154,7 @@ class ControllerUserUserPermission extends Controller {
    		$this->data['breadcrumbs'][] = array(
        		'text'      => $this->language->get('heading_title'),
 			'href'      => $this->url->link('user/user_permission', 'token=' . $this->session->data['token'] . $url, 'SSL'),
-      		'separator' => ' :: '
+      		'separator' => $this->language->get('breadcrumb_seperator')
    		);
 							
 		$this->data['insert'] = $this->url->link('user/user_permission/insert', 'token=' . $this->session->data['token'] . $url, 'SSL');
@@ -308,7 +308,7 @@ class ControllerUserUserPermission extends Controller {
    		$this->data['breadcrumbs'][] = array(
        		'text'      => $this->language->get('heading_title'),
 			'href'      => $this->url->link('user/user_permission', 'token=' . $this->session->data['token'] . $url, 'SSL'),
-      		'separator' => ' :: '
+      		'separator' => $this->language->get('breadcrumb_seperator')
    		);
 			
 		if (!isset($this->request->get['user_group_id'])) {

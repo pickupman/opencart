@@ -3,7 +3,7 @@ class ControllerPaymentPPStandard extends Controller {
 	private $error = array();
 
 	public function index() {
-		$this->load->language('payment/pp_standard');
+		$this->language->load('payment/pp_standard');
 
 		$this->document->setTitle($this->language->get('heading_title'));
 
@@ -72,13 +72,13 @@ class ControllerPaymentPPStandard extends Controller {
    		$this->data['breadcrumbs'][] = array(
        		'text'      => $this->language->get('text_payment'),
 			'href'      => $this->url->link('extension/payment', 'token=' . $this->session->data['token'], 'SSL'),
-      		'separator' => ' :: '
+      		'separator' => $this->language->get('breadcrumb_seperator')
    		);
 
    		$this->data['breadcrumbs'][] = array(
        		'text'      => $this->language->get('heading_title'),
 			'href'      => $this->url->link('payment/pp_standard', 'token=' . $this->session->data['token'], 'SSL'),
-      		'separator' => ' :: '
+      		'separator' => $this->language->get('breadcrumb_seperator')
    		);
 
 		$this->data['action'] = $this->url->link('payment/pp_standard', 'token=' . $this->session->data['token'], 'SSL');

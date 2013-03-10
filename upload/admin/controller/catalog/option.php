@@ -3,7 +3,7 @@ class ControllerCatalogOption extends Controller {
 	private $error = array();  
  
 	public function index() {
-		$this->load->language('catalog/option');
+		$this->language->load('catalog/option');
 
 		$this->document->setTitle($this->language->get('heading_title'));
 		
@@ -13,7 +13,7 @@ class ControllerCatalogOption extends Controller {
 	}
 
 	public function insert() {
-		$this->load->language('catalog/option');
+		$this->language->load('catalog/option');
 
 		$this->document->setTitle($this->language->get('heading_title'));
 		
@@ -45,7 +45,7 @@ class ControllerCatalogOption extends Controller {
 	}
 
 	public function update() {
-		$this->load->language('catalog/option');
+		$this->language->load('catalog/option');
 
 		$this->document->setTitle($this->language->get('heading_title'));
 		
@@ -77,7 +77,7 @@ class ControllerCatalogOption extends Controller {
 	}
 
 	public function delete() {
-		$this->load->language('catalog/option');
+		$this->language->load('catalog/option');
 
 		$this->document->setTitle($this->language->get('heading_title'));
  		
@@ -154,7 +154,7 @@ class ControllerCatalogOption extends Controller {
    		$this->data['breadcrumbs'][] = array(
        		'text'      => $this->language->get('heading_title'),
 			'href'      => $this->url->link('catalog/option', 'token=' . $this->session->data['token'] . $url, 'SSL'),
-      		'separator' => ' :: '
+      		'separator' => $this->language->get('breadcrumb_seperator')
    		);
 		
 		$this->data['insert'] = $this->url->link('catalog/option/insert', 'token=' . $this->session->data['token'] . $url, 'SSL');
@@ -282,7 +282,7 @@ class ControllerCatalogOption extends Controller {
 		
 		$this->data['entry_name'] = $this->language->get('entry_name');
 		$this->data['entry_type'] = $this->language->get('entry_type');
-		$this->data['entry_value'] = $this->language->get('entry_value');
+		$this->data['entry_option_value'] = $this->language->get('entry_option_value');
 		$this->data['entry_image'] = $this->language->get('entry_image');
 		$this->data['entry_sort_order'] = $this->language->get('entry_sort_order');
 
@@ -334,7 +334,7 @@ class ControllerCatalogOption extends Controller {
    		$this->data['breadcrumbs'][] = array(
        		'text'      => $this->language->get('heading_title'),
 			'href'      => $this->url->link('catalog/option', 'token=' . $this->session->data['token'] . $url, 'SSL'),
-      		'separator' => ' :: '
+      		'separator' => $this->language->get('breadcrumb_seperator')
    		);
 		
 		if (!isset($this->request->get['option_id'])) {
@@ -476,7 +476,7 @@ class ControllerCatalogOption extends Controller {
 		$json = array();
 		
 		if (isset($this->request->get['filter_name'])) {
-			$this->load->language('catalog/option');
+			$this->language->load('catalog/option');
 			
 			$this->load->model('catalog/option');
 			

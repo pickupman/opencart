@@ -3,7 +3,7 @@ class ControllerShippingUsps extends Controller {
 	private $error = array();
 
 	public function index() {
-		$this->load->language('shipping/usps');
+		$this->language->load('shipping/usps');
 
 		$this->document->setTitle($this->language->get('heading_title'));
 
@@ -133,13 +133,13 @@ class ControllerShippingUsps extends Controller {
    		$this->data['breadcrumbs'][] = array(
        		'text'      => $this->language->get('text_shipping'),
 			'href'      => $this->url->link('extension/shipping', 'token=' . $this->session->data['token'], 'SSL'),
-      		'separator' => ' :: '
+      		'separator' => $this->language->get('breadcrumb_seperator')
    		);
 
    		$this->data['breadcrumbs'][] = array(
        		'text'      => $this->language->get('heading_title'),
 			'href'      => $this->url->link('shipping/usps', 'token=' . $this->session->data['token'], 'SSL'),
-      		'separator' => ' :: '
+      		'separator' => $this->language->get('breadcrumb_seperator')
    		);
 
 		$this->data['action'] = $this->url->link('shipping/usps', 'token=' . $this->session->data['token'], 'SSL');
@@ -484,12 +484,20 @@ class ControllerShippingUsps extends Controller {
 		} else {
 			$this->data['usps_tax_class_id'] = $this->config->get('usps_tax_class_id');
 		}
+		
+		$this->load->model('localisation/tax_class');
+
+		$this->data['tax_classes'] = $this->model_localisation_tax_class->getTaxClasses();
 
 		if (isset($this->request->post['usps_geo_zone_id'])) {
 			$this->data['usps_geo_zone_id'] = $this->request->post['usps_geo_zone_id'];
 		} else {
 			$this->data['usps_geo_zone_id'] = $this->config->get('usps_geo_zone_id');
 		}
+		
+		$this->load->model('localisation/geo_zone');
+
+		$this->data['geo_zones'] = $this->model_localisation_geo_zone->getGeoZones();
 
 		if (isset($this->request->post['usps_debug'])) {
 			$this->data['usps_debug'] = $this->request->post['usps_debug'];
@@ -508,14 +516,6 @@ class ControllerShippingUsps extends Controller {
 		} else {
 			$this->data['usps_sort_order'] = $this->config->get('usps_sort_order');
 		}
-
-		$this->load->model('localisation/tax_class');
-
-		$this->data['tax_classes'] = $this->model_localisation_tax_class->getTaxClasses();
-
-		$this->load->model('localisation/geo_zone');
-
-		$this->data['geo_zones'] = $this->model_localisation_geo_zone->getGeoZones();
 
 		$this->template = 'shipping/usps.tpl';
 		$this->children = array(

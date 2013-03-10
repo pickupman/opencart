@@ -3,7 +3,7 @@ class ControllerLocalisationCurrency extends Controller {
 	private $error = array();
  
 	public function index() {
-		$this->load->language('localisation/currency');
+		$this->language->load('localisation/currency');
 
 		$this->document->setTitle($this->language->get('heading_title'));
 		
@@ -13,7 +13,7 @@ class ControllerLocalisationCurrency extends Controller {
 	}
 
 	public function insert() {
-		$this->load->language('localisation/currency');
+		$this->language->load('localisation/currency');
 
 		$this->document->setTitle($this->language->get('heading_title'));
 		
@@ -45,7 +45,7 @@ class ControllerLocalisationCurrency extends Controller {
 	}
 
 	public function update() {
-		$this->load->language('localisation/currency');
+		$this->language->load('localisation/currency');
 
 		$this->document->setTitle($this->language->get('heading_title'));
 		
@@ -77,7 +77,7 @@ class ControllerLocalisationCurrency extends Controller {
 	}
 
 	public function delete() {
-		$this->load->language('localisation/currency');
+		$this->language->load('localisation/currency');
 
 		$this->document->setTitle($this->language->get('heading_title'));
 		
@@ -154,7 +154,7 @@ class ControllerLocalisationCurrency extends Controller {
    		$this->data['breadcrumbs'][] = array(
        		'text'      => $this->language->get('heading_title'),
 			'href'      => $this->url->link('localisation/currency', 'token=' . $this->session->data['token'] . $url, 'SSL'),
-      		'separator' => ' :: '
+      		'separator' => $this->language->get('breadcrumb_seperator')
    		);
 		
 		$this->data['insert'] = $this->url->link('localisation/currency/insert', 'token=' . $this->session->data['token'] . $url, 'SSL');
@@ -329,7 +329,7 @@ class ControllerLocalisationCurrency extends Controller {
    		$this->data['breadcrumbs'][] = array(
        		'text'      => $this->language->get('heading_title'),
 			'href'      => $this->url->link('localisation/currency', 'token=' . $this->session->data['token'] . $url, 'SSL'),      		
-      		'separator' => ' :: '
+      		'separator' => $this->language->get('breadcrumb_seperator')
    		);
 		
 		if (!isset($this->request->get['currency_id'])) {

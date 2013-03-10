@@ -3,7 +3,7 @@ class ControllerLocalisationLengthClass extends Controller {
 	private $error = array();  
  
 	public function index() {
-		$this->load->language('localisation/length_class');
+		$this->language->load('localisation/length_class');
 
 		$this->document->setTitle($this->language->get('heading_title'));
 		
@@ -13,7 +13,7 @@ class ControllerLocalisationLengthClass extends Controller {
 	}
 
 	public function insert() {
-		$this->load->language('localisation/length_class');
+		$this->language->load('localisation/length_class');
 
 		$this->document->setTitle($this->language->get('heading_title'));
 		
@@ -45,7 +45,7 @@ class ControllerLocalisationLengthClass extends Controller {
 	}
 
 	public function update() {
-		$this->load->language('localisation/length_class');
+		$this->language->load('localisation/length_class');
 
 		$this->document->setTitle($this->language->get('heading_title'));
 		
@@ -77,7 +77,7 @@ class ControllerLocalisationLengthClass extends Controller {
 	}
 
 	public function delete() {
-		$this->load->language('localisation/length_class');
+		$this->language->load('localisation/length_class');
 
 		$this->document->setTitle($this->language->get('heading_title'));
  		
@@ -154,7 +154,7 @@ class ControllerLocalisationLengthClass extends Controller {
    		$this->data['breadcrumbs'][] = array(
        		'text'      => $this->language->get('heading_title'),
 			'href'      => $this->url->link('localisation/length_class', 'token=' . $this->session->data['token'] . $url, 'SSL'),
-      		'separator' => ' :: '
+      		'separator' => $this->language->get('breadcrumb_seperator')
    		);
 		
 		$this->data['insert'] = $this->url->link('localisation/length_class/insert', 'token=' . $this->session->data['token'] . $url, 'SSL');
@@ -317,7 +317,7 @@ class ControllerLocalisationLengthClass extends Controller {
    		$this->data['breadcrumbs'][] = array(
        		'text'      => $this->language->get('heading_title'),
 			'href'      => $this->url->link('localisation/length_class', 'token=' . $this->session->data['token'] . $url, 'SSL'),      		
-      		'separator' => ' :: '
+      		'separator' => $this->language->get('breadcrumb_seperator')
    		);
 		
 		if (!isset($this->request->get['length_class_id'])) {

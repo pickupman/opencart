@@ -10,7 +10,9 @@ class ControllerAffiliateRegister extends Controller {
     	$this->language->load('affiliate/register');
 		
 		$this->document->setTitle($this->language->get('heading_title'));
-		
+		$this->document->addScript('catalog/view/javascript/jquery/colorbox/jquery.colorbox-min.js');
+		$this->document->addStyle('catalog/view/javascript/jquery/colorbox/colorbox.css');
+					
 		$this->load->model('affiliate/affiliate');
 		
     	if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validate()) {
@@ -383,7 +385,7 @@ class ControllerAffiliateRegister extends Controller {
       		$this->error['country'] = $this->language->get('error_country');
     	}
 		
-    	if ($this->request->post['zone_id'] == '') {
+    	if (!isset($this->request->post['zone_id']) || $this->request->post['zone_id'] == '') {
       		$this->error['zone'] = $this->language->get('error_zone');
     	}
 

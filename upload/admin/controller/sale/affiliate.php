@@ -3,7 +3,7 @@ class ControllerSaleAffiliate extends Controller {
 	private $error = array();
   
   	public function index() {
-		$this->load->language('sale/affiliate');
+		$this->language->load('sale/affiliate');
 		 
 		$this->document->setTitle($this->language->get('heading_title'));
 		
@@ -13,7 +13,7 @@ class ControllerSaleAffiliate extends Controller {
   	}
   
   	public function insert() {
-		$this->load->language('sale/affiliate');
+		$this->language->load('sale/affiliate');
 
     	$this->document->setTitle($this->language->get('heading_title'));
 		
@@ -65,7 +65,7 @@ class ControllerSaleAffiliate extends Controller {
   	} 
    
   	public function update() {
-		$this->load->language('sale/affiliate');
+		$this->language->load('sale/affiliate');
 
     	$this->document->setTitle($this->language->get('heading_title'));
 		
@@ -117,7 +117,7 @@ class ControllerSaleAffiliate extends Controller {
   	}   
 
   	public function delete() {
-		$this->load->language('sale/affiliate');
+		$this->language->load('sale/affiliate');
 
     	$this->document->setTitle($this->language->get('heading_title'));
 		
@@ -171,7 +171,7 @@ class ControllerSaleAffiliate extends Controller {
   	}  
 		 
 	public function approve() {
-		$this->load->language('sale/affiliate');
+		$this->language->load('sale/affiliate');
     	
 		$this->document->setTitle($this->language->get('heading_title'));
 		
@@ -328,7 +328,7 @@ class ControllerSaleAffiliate extends Controller {
    		$this->data['breadcrumbs'][] = array(
        		'text'      => $this->language->get('heading_title'),
 			'href'      => $this->url->link('sale/affiliate', 'token=' . $this->session->data['token'] . $url, 'SSL'),
-      		'separator' => ' :: '
+      		'separator' => $this->language->get('breadcrumb_seperator')
    		);
 		
 		$this->data['approve'] = $this->url->link('sale/affiliate/approve', 'token=' . $this->session->data['token'] . $url, 'SSL');
@@ -679,7 +679,7 @@ class ControllerSaleAffiliate extends Controller {
    		$this->data['breadcrumbs'][] = array(
        		'text'      => $this->language->get('heading_title'),
 			'href'      => $this->url->link('sale/affiliate', 'token=' . $this->session->data['token'] . $url, 'SSL'),
-      		'separator' => ' :: '
+      		'separator' => $this->language->get('breadcrumb_seperator')
    		);
 
 		if (!isset($this->request->get['affiliate_id'])) {
@@ -982,7 +982,7 @@ class ControllerSaleAffiliate extends Controller {
       		$this->error['country'] = $this->language->get('error_country');
     	}
 		
-    	if ($this->request->post['zone_id'] == '') {
+    	if (!isset($this->request->post['zone_id']) || $this->request->post['zone_id'] == '') {
       		$this->error['zone'] = $this->language->get('error_zone');
     	}
 

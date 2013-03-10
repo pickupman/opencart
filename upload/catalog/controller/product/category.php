@@ -75,6 +75,7 @@ class ControllerProductCategory extends Controller {
 	  		$this->document->setTitle($category_info['name']);
 			$this->document->setDescription($category_info['meta_description']);
 			$this->document->setKeywords($category_info['meta_keyword']);
+			$this->document->addScript('catalog/view/javascript/jquery/jquery.total-storage.min.js');
 			
 			$this->data['heading_title'] = $category_info['name'];
 			
@@ -131,12 +132,11 @@ class ControllerProductCategory extends Controller {
 					'filter_sub_category' => true
 				);
 				
-				$product_total = $this->model_catalog_product->getTotalProducts($data);				
-				
 				$this->data['categories'][] = array(
-					'name'  => $result['name'] . ($this->config->get('config_product_count') ? ' (' . $product_total . ')' : ''),
+					'name'  => $result['name'] . ($this->config->get('config_product_count') ? ' (' . $this->model_catalog_product->getTotalProducts($data) . ')' : ''),
 					'href'  => $this->url->link('product/category', 'path=' . $this->request->get['path'] . '_' . $result['category_id'] . $url)
 				);
+				
 			}
 			
 			$this->data['products'] = array();
@@ -188,7 +188,7 @@ class ControllerProductCategory extends Controller {
 					'product_id'  => $result['product_id'],
 					'thumb'       => $image,
 					'name'        => $result['name'],
-					'description' => utf8_substr(strip_tags(html_entity_decode($result['description'], ENT_QUOTES, 'UTF-8')), 0, 100) . '..',
+					'description' => utf8_substr(strip_tags(html_entity_decode($result['description'], ENT_QUOTES, 'UTF-8')), 0, $this->config->get('config_list_description_limit')) . '..',
 					'price'       => $price,
 					'special'     => $special,
 					'tax'         => $tax,

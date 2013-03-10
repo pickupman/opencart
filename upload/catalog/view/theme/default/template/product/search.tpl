@@ -125,7 +125,7 @@ $('#content input[name=\'search\']').keydown(function(e) {
 	}
 });
 
-$('select[name=\'category_id\']').bind('change', function() {
+$('select[name=\'category_id\']').on('change', function() {
 	if (this.value == '0') {
 		$('input[name=\'sub_category\']').attr('disabled', 'disabled');
 		$('input[name=\'sub_category\']').removeAttr('checked');
@@ -136,7 +136,7 @@ $('select[name=\'category_id\']').bind('change', function() {
 
 $('select[name=\'category_id\']').trigger('change');
 
-$('#button-search').bind('click', function() {
+$('#button-search').on('click', function() {
 	url = 'index.php?route=product/search';
 	
 	var search = $('#content input[name=\'search\']').attr('value');
@@ -160,7 +160,7 @@ $('#button-search').bind('click', function() {
 	var filter_description = $('#content input[name=\'description\']:checked').attr('value');
 	
 	if (filter_description) {
-		url += '&filter_description=true';
+		url += '&description=true';
 	}
 
 	location = url;
@@ -201,7 +201,6 @@ function display(view) {
 			}
 				
 			html += '</div>';
-
 						
 			$(element).html(html);
 		});		

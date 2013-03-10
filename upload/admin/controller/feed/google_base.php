@@ -3,7 +3,7 @@ class ControllerFeedGoogleBase extends Controller {
 	private $error = array(); 
 	
 	public function index() {
-		$this->load->language('feed/google_base');
+		$this->language->load('feed/google_base');
 
 		$this->document->setTitle($this->language->get('heading_title'));
 		
@@ -47,13 +47,13 @@ class ControllerFeedGoogleBase extends Controller {
    		$this->data['breadcrumbs'][] = array(
        		'text'      => $this->language->get('text_feed'),
 			'href'      => $this->url->link('extension/feed', 'token=' . $this->session->data['token'], 'SSL'),
-      		'separator' => ' :: '
+      		'separator' => $this->language->get('breadcrumb_seperator')
    		);
 
    		$this->data['breadcrumbs'][] = array(
        		'text'      => $this->language->get('heading_title'),
 			'href'      => $this->url->link('feed/google_base', 'token=' . $this->session->data['token'], 'SSL'),
-      		'separator' => ' :: '
+      		'separator' => $this->language->get('breadcrumb_seperator')
    		);
 				
 		$this->data['action'] = $this->url->link('feed/google_base', 'token=' . $this->session->data['token'], 'SSL');

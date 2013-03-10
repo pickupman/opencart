@@ -27,12 +27,12 @@ if (ini_get('register_globals')) {
 // Magic Quotes Fix
 if (ini_get('magic_quotes_gpc')) {
 	function clean($data) {
-   		if (is_array($data)) {
-  			foreach ($data as $key => $value) {
-    			$data[clean($key)] = clean($value);
-  			}
+		if (is_array($data)) {
+			foreach ($data as $key => $value) {
+				$data[clean($key)] = clean($value);
+			}
 		} else {
-  			$data = stripslashes($data);
+			$data = stripslashes($data);
 		}
 	
 		return $data;
@@ -69,6 +69,10 @@ if (!isset($_SERVER['REQUEST_URI'])) {
 	} 
 }
 
+if (!isset($_SERVER['HTTP_HOST'])) {
+	$_SERVER['HTTP_HOST'] = getenv('HTTP_HOST');
+}
+
 // Helper
 require_once(DIR_SYSTEM . 'helper/json.php'); 
 require_once(DIR_SYSTEM . 'helper/utf8.php'); 
@@ -80,6 +84,7 @@ require_once(DIR_SYSTEM . 'engine/front.php');
 require_once(DIR_SYSTEM . 'engine/loader.php'); 
 require_once(DIR_SYSTEM . 'engine/model.php');
 require_once(DIR_SYSTEM . 'engine/registry.php');
+require_once(DIR_SYSTEM . 'engine/modification.php');
 
 // Common
 require_once(DIR_SYSTEM . 'library/cache.php');

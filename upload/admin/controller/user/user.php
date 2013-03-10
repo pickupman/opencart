@@ -3,7 +3,7 @@ class ControllerUserUser extends Controller {
 	private $error = array();
    
   	public function index() {
-    	$this->load->language('user/user');
+    	$this->language->load('user/user');
 
     	$this->document->setTitle($this->language->get('heading_title'));
 	
@@ -13,7 +13,7 @@ class ControllerUserUser extends Controller {
   	}
    
   	public function insert() {
-    	$this->load->language('user/user');
+    	$this->language->load('user/user');
 
     	$this->document->setTitle($this->language->get('heading_title'));
 		
@@ -45,7 +45,7 @@ class ControllerUserUser extends Controller {
   	}
 
   	public function update() {
-    	$this->load->language('user/user');
+    	$this->language->load('user/user');
 
     	$this->document->setTitle($this->language->get('heading_title'));
 		
@@ -77,7 +77,7 @@ class ControllerUserUser extends Controller {
   	}
  
   	public function delete() { 
-    	$this->load->language('user/user');
+    	$this->language->load('user/user');
 
     	$this->document->setTitle($this->language->get('heading_title'));
 		
@@ -154,7 +154,7 @@ class ControllerUserUser extends Controller {
    		$this->data['breadcrumbs'][] = array(
        		'text'      => $this->language->get('heading_title'),
 			'href'      => $this->url->link('user/user', 'token=' . $this->session->data['token'] . $url, 'SSL'),
-      		'separator' => ' :: '
+      		'separator' => $this->language->get('breadcrumb_seperator')
    		);
 			
 		$this->data['insert'] = $this->url->link('user/user/insert', 'token=' . $this->session->data['token'] . $url, 'SSL');
@@ -278,7 +278,6 @@ class ControllerUserUser extends Controller {
     	$this->data['entry_email'] = $this->language->get('entry_email');
     	$this->data['entry_user_group'] = $this->language->get('entry_user_group');
 		$this->data['entry_status'] = $this->language->get('entry_status');
-		$this->data['entry_captcha'] = $this->language->get('entry_captcha');
 
     	$this->data['button_save'] = $this->language->get('button_save');
     	$this->data['button_cancel'] = $this->language->get('button_cancel');
@@ -344,7 +343,7 @@ class ControllerUserUser extends Controller {
    		$this->data['breadcrumbs'][] = array(
        		'text'      => $this->language->get('heading_title'),
 			'href'      => $this->url->link('user/user', 'token=' . $this->session->data['token'] . $url, 'SSL'),
-      		'separator' => ' :: '
+      		'separator' => $this->language->get('breadcrumb_seperator')
    		);
 		
 		if (!isset($this->request->get['user_id'])) {

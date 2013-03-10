@@ -3,7 +3,7 @@ class ControllerSaleCoupon extends Controller {
 	private $error = array();
      
   	public function index() {
-		$this->load->language('sale/coupon');
+		$this->language->load('sale/coupon');
     	
 		$this->document->setTitle($this->language->get('heading_title'));
 		
@@ -13,7 +13,7 @@ class ControllerSaleCoupon extends Controller {
   	}
   
   	public function insert() {
-    	$this->load->language('sale/coupon');
+    	$this->language->load('sale/coupon');
 
     	$this->document->setTitle($this->language->get('heading_title'));
 		
@@ -45,7 +45,7 @@ class ControllerSaleCoupon extends Controller {
   	}
 
   	public function update() {
-    	$this->load->language('sale/coupon');
+    	$this->language->load('sale/coupon');
 
     	$this->document->setTitle($this->language->get('heading_title'));
 		
@@ -77,7 +77,7 @@ class ControllerSaleCoupon extends Controller {
   	}
 
   	public function delete() {
-    	$this->load->language('sale/coupon');
+    	$this->language->load('sale/coupon');
 
     	$this->document->setTitle($this->language->get('heading_title'));
 		
@@ -154,7 +154,7 @@ class ControllerSaleCoupon extends Controller {
    		$this->data['breadcrumbs'][] = array(
        		'text'      => $this->language->get('heading_title'),
 			'href'      => $this->url->link('sale/coupon', 'token=' . $this->session->data['token'] . $url, 'SSL'),
-      		'separator' => ' :: '
+      		'separator' => $this->language->get('breadcrumb_seperator')
    		);
 							
 		$this->data['insert'] = $this->url->link('sale/coupon/insert', 'token=' . $this->session->data['token'] . $url, 'SSL');
@@ -303,7 +303,7 @@ class ControllerSaleCoupon extends Controller {
     	$this->data['button_cancel'] = $this->language->get('button_cancel');
 
 		$this->data['tab_general'] = $this->language->get('tab_general');
-		$this->data['tab_coupon_history'] = $this->language->get('tab_coupon_history');
+		$this->data['tab_history'] = $this->language->get('tab_history');
 
 		$this->data['token'] = $this->session->data['token'];
 	
@@ -368,7 +368,7 @@ class ControllerSaleCoupon extends Controller {
    		$this->data['breadcrumbs'][] = array(
        		'text'      => $this->language->get('heading_title'),
 			'href'      => $this->url->link('sale/coupon', 'token=' . $this->session->data['token'] . $url, 'SSL'),
-      		'separator' => ' :: '
+      		'separator' => $this->language->get('breadcrumb_seperator')
    		);
 									
 		if (!isset($this->request->get['coupon_id'])) {

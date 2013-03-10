@@ -3,7 +3,7 @@ class ControllerCatalogAttributeGroup extends Controller {
 	private $error = array();
    
   	public function index() {
-		$this->load->language('catalog/attribute_group');
+		$this->language->load('catalog/attribute_group');
 	
     	$this->document->setTitle($this->language->get('heading_title'));
 		
@@ -13,7 +13,7 @@ class ControllerCatalogAttributeGroup extends Controller {
   	}
               
   	public function insert() {
-		$this->load->language('catalog/attribute_group');
+		$this->language->load('catalog/attribute_group');
 	
     	$this->document->setTitle($this->language->get('heading_title'));
 		
@@ -45,7 +45,7 @@ class ControllerCatalogAttributeGroup extends Controller {
   	}
 
   	public function update() {
-		$this->load->language('catalog/attribute_group');
+		$this->language->load('catalog/attribute_group');
 	
     	$this->document->setTitle($this->language->get('heading_title'));
 		
@@ -77,7 +77,7 @@ class ControllerCatalogAttributeGroup extends Controller {
   	}
 
   	public function delete() {
-		$this->load->language('catalog/attribute_group');
+		$this->language->load('catalog/attribute_group');
 	
     	$this->document->setTitle($this->language->get('heading_title'));
 		
@@ -154,7 +154,7 @@ class ControllerCatalogAttributeGroup extends Controller {
    		$this->data['breadcrumbs'][] = array(
        		'text'      => $this->language->get('heading_title'),
 			'href'      => $this->url->link('catalog/attribute_group', 'token=' . $this->session->data['token'] . $url, 'SSL'),
-      		'separator' => ' :: '
+      		'separator' => $this->language->get('breadcrumb_seperator')
    		);
 							
 		$this->data['insert'] = $this->url->link('catalog/attribute_group/insert', 'token=' . $this->session->data['token'] . $url, 'SSL');
@@ -307,7 +307,7 @@ class ControllerCatalogAttributeGroup extends Controller {
    		$this->data['breadcrumbs'][] = array(
        		'text'      => $this->language->get('heading_title'),
 			'href'      => $this->url->link('catalog/attribute_group', 'token=' . $this->session->data['token'] . $url, 'SSL'),
-      		'separator' => ' :: '
+      		'separator' => $this->language->get('breadcrumb_seperator')
    		);
 		
 		if (!isset($this->request->get['attribute_group_id'])) {

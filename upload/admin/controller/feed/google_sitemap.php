@@ -3,7 +3,7 @@ class ControllerFeedGoogleSitemap extends Controller {
 	private $error = array(); 
 	
 	public function index() {
-		$this->load->language('feed/google_sitemap');
+		$this->language->load('feed/google_sitemap');
 
 		$this->document->setTitle($this->language->get('heading_title'));
 		
@@ -47,13 +47,13 @@ class ControllerFeedGoogleSitemap extends Controller {
    		$this->data['breadcrumbs'][] = array(
        		'text'      => $this->language->get('text_feed'),
 			'href'      => $this->url->link('extension/feed', 'token=' . $this->session->data['token'], 'SSL'),       		
-      		'separator' => ' :: '
+      		'separator' => $this->language->get('breadcrumb_seperator')
    		);
 
    		$this->data['breadcrumbs'][] = array(
        		'text'      => $this->language->get('heading_title'),
 			'href'      => $this->url->link('feed/google_sitemap', 'token=' . $this->session->data['token'], 'SSL'),
-      		'separator' => ' :: '
+      		'separator' => $this->language->get('breadcrumb_seperator')
    		);
 				
 		$this->data['action'] = $this->url->link('feed/google_sitemap', 'token=' . $this->session->data['token'], 'SSL');
